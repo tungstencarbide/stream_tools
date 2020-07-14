@@ -11,6 +11,4 @@ Design aims:
 
 Tools:
 
-- countdown: displays a themeable countdown to an arbitrary date an time
-
-
+- countdown: displays a themeable countdown to an arbitrary date and time
