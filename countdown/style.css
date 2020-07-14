@@ -1,0 +1,38 @@
+@import url(https://fonts.googleapis.com/css?family=Orbitron);
+
+#days {
+  font-size: 200px;
+  color: #db4844;
+}
+#hours {
+  font-size: 150px;
+  color: #207c62;
+}
+#minutes {
+  font-size: 100px;
+  color: #248af6;
+}
+#seconds {
+  font-size: 50px;
+  color: #086dab;
+}
+
+div {
+  display: inline-block;
+  line-height: 1;
+  padding: 20px;
+  font-size: 40px;
+}
+
+span {
+  display: block;
+  font-size: 20px;
+  color: white;
+}
+
+body {
+  text-align: center;
+  font-family: 'Orbitron', sans;
+  color: white;
+  background: #222;
+}
