@@ -61,6 +61,10 @@ var qs = window.location.search;
 var parms = new URLSearchParams(qs);
 var endTime = parms.get('endtime');
 var font = parms.get('font');
+var text = parms.get('headtext');
+if (text != null) {
+    document.getElementById("header").innerHTML = text;
+}
 if (font != null) {
     loadGoogleFont(font);
     for (let k in document.styleSheets[0].cssRules) {
