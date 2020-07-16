@@ -114,6 +114,8 @@ const UrlDisplay = ({ url }) => {
 };
 
 const PreviewDisplay = ({ url }) => {
+  const debouncedUrl = useDebounce(url, 1000);
+
   return e(
     "div",
     { className: "row" },
@@ -121,7 +123,10 @@ const PreviewDisplay = ({ url }) => {
       "div",
       { className: "col-lg-12" },
       e("h1", null, "Preview"),
-      e("iframe", { src: url, style: { width: "100%", height: "400px" } })
+      e("iframe", {
+        src: debouncedUrl,
+        style: { width: "100%", height: "400px" },
+      })
     )
   );
 };
