@@ -3,6 +3,8 @@ const e = React.createElement;
 const baseUrl = new URL("..", window.location);
 
 const DateTimePicker = ({ dateTime, setDateTime }) => {
+  const [invalid, setInvalid] = React.useState(false);
+
   const label = e(
     "h2",
     null,
@@ -10,9 +12,17 @@ const DateTimePicker = ({ dateTime, setDateTime }) => {
   );
   const picker = e(Datetime, {
     value: dateTime,
-    onChange: setDateTime,
+    onChange: (d) => {
+      if (d instanceof moment) {
+        setDateTime(d);
+        setInvalid(false);
+      } else {
+        setInvalid(true);
+      }
+    },
     inputProps: {
       id: "datetime",
+      className: invalid ? "form-control is-invalid" : "form-control",
     },
   });
   return e("div", { className: "col-lg-6" }, label, picker);
@@ -24,6 +34,7 @@ const TimeZoneInput = ({ timeZone, setTimeZone }) => {
     value: timeZone,
     onChange: (e) => setTimeZone(e.target.value),
     id: "timezone",
+    className: "form-control",
     style: {
       width: "100%",
     },
@@ -41,6 +52,7 @@ const MessageInput = ({ message, setMessage }) => {
     value: message,
     onChange: (e) => setMessage(e.target.value),
     id: "message",
+    className: "form-control",
     style: {
       width: "100%",
     },
@@ -68,6 +80,7 @@ const FontInput = ({ font, setFont }) => {
     value: font,
     onChange: (e) => setFont(e.target.value),
     id: "font",
+    className: "form-control",
     style: {
       width: "100%",
     },
