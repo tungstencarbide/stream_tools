@@ -1,6 +1,6 @@
 "use strict";
 const e = React.createElement;
-const baseUrl = "https://aminorgames.com/stream_tools/countdown/";
+const baseUrl = new URL("..", window.location);
 
 const DateTimePicker = ({ dateTime, setDateTime }) => {
   const label = e(
@@ -139,7 +139,11 @@ const App = () => {
   const encodeMessage = encodeURIComponent(message);
   const encodeFont = encodeURIComponent(font);
 
-  const url = `${baseUrl}?endtime=${encodeTime}&headtext=${encodeMessage}&font=${encodeFont}`;
+  const joinedUrl = new URL(
+    `?endtime=${encodeTime}&headtext=${encodeMessage}&font=${encodeFont}`,
+    baseUrl
+  );
+  const url = joinedUrl.href;
 
   return e(
     React.Fragment,
